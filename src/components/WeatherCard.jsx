@@ -1,16 +1,15 @@
-import { useSelector } from "react-redux";
+/* eslint-disable react/prop-types */
 import { Card, Image } from "semantic-ui-react";
-import dayImage from "../assets/day.png"; // Replace with the path to your day image
-import nightImage from "../assets/night.png"; // Replace with the path to your night image
+import dayImage from "../assets/day.png";
+import nightImage from "../assets/night.png";
 import "./WeatherCard.scss";
-const WeatherCard = () => {
-  const weather = useSelector((state) => state.weather.current);
-
+const WeatherCard = ({ weather, vendor }) => {
   if (!weather) {
     return (
       <p
         style={{
-          marginTop: "10px",
+          margin: "20px 0",
+          textAlign: "center",
         }}
       >
         Please search for a location to see the weather details.
@@ -23,7 +22,7 @@ const WeatherCard = () => {
   const isDay = current.is_day;
 
   return (
-    <Card>
+    <Card color={vendor.color}>
       <Image
         style={{ padding: "20px" }}
         src={isDay ? dayImage : nightImage}

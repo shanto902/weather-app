@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import vendors from "../../config/vendors";
 
 const initialState = {
-  currentVendor: vendors.vendor1, // Default vendor
+  currentVendor: vendors.vendor1,
 };
 
 const vendorSlice = createSlice({

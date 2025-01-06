@@ -1,8 +1,9 @@
+/* eslint-disable react/prop-types */
 import { useSelector, useDispatch } from "react-redux";
 import { List, Button, Header, Image } from "semantic-ui-react";
 import { fetchWeather } from "../store/features/weatherSlice";
 
-const HistoryList = () => {
+const HistoryList = ({ vendor }) => {
   const dispatch = useDispatch();
   const history = useSelector((state) => state.weather.history);
 
@@ -14,17 +15,17 @@ const HistoryList = () => {
     dispatch({ type: "weather/clearHistory" });
   };
 
-  console.log(history);
-
   return (
     <div style={{ marginTop: "20px" }}>
-      <Header as="h3">Last Viewed Locations</Header>
+      <Header textAlign="center" color={vendor.color} as="h3">
+        Last Viewed Locations
+      </Header>
 
       {history.length === 0 ? (
         <p>No recently viewed locations.</p>
       ) : (
         <>
-          <List divided relaxed>
+          <List celled divided relaxed>
             {history.slice(-3).map((location, index) => (
               <List.Item
                 key={index}
@@ -48,8 +49,9 @@ const HistoryList = () => {
           </List>
           <Button
             onClick={handleClearHistory}
-            color="red"
+            color={vendor.color}
             style={{ marginBottom: "10px" }}
+            fluid
           >
             Clear History
           </Button>

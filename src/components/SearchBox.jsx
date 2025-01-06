@@ -59,6 +59,7 @@ const SearchBox = () => {
       }}
     >
       <Search
+        minCharacters={3}
         fluid
         style={{
           width: "400px",

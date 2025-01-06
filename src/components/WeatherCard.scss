@@ -20,3 +20,8 @@
   border-radius: 0px;
   width: 400px;
 }
+@media screen and (max-width: 480px) {
+  .ui.search .prompt {
+    width: 400px;
+  }
+}

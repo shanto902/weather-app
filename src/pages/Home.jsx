@@ -1,21 +1,13 @@
+/* eslint-disable react/prop-types */
 import React, { Suspense } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addToHistory, fetchWeather } from "../store/features/weatherSlice";
-import {
-  Header,
-  Image,
-  Segment,
-  Loader,
-  Grid,
-  Divider,
-  GridColumn,
-  GridRow,
-} from "semantic-ui-react";
+import { Segment, Loader, Grid, GridColumn, GridRow } from "semantic-ui-react";
 import WeatherCard from "../components/weatherCard";
 
-const Home = () => {
+const Home = ({ vendor }) => {
   const dispatch = useDispatch();
-  const vendor = useSelector((state) => state.vendor.currentVendor);
+
   const weather = useSelector((state) => state.weather.current);
   const history = useSelector((state) => state.weather.history);
 
@@ -48,56 +40,48 @@ const Home = () => {
   }
 
   return (
-    <main>
-      <header
-        style={{
-          paddingBottom: "10px",
-          display: "flex",
-          justifyContent: "space-around",
-          alignItems: "center",
-        }}
-      >
-        <Image
-          size="small"
-          src={vendor.logo || "../assets/react.svg"}
-          alt={`${vendor.name} Logo`}
-        />
-        <Header textAlign="center" as="h1">
-          {vendor.name}
-        </Header>
-      </header>
-      <main>
-        <Segment>
-          <Grid columns={2}>
-            <Divider vertical> - </Divider>
-            <GridRow verticalAlign="middle">
-              {SearchBox && (
-                <GridColumn>
-                  <Suspense fallback={<Loader active inline="centered" />}>
-                    <div
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        flexDirection: "column",
-                      }}
-                    >
-                      <SearchBox onSearch={handleSearch} />
-                      <WeatherCard weather={weather} />
-                    </div>
-                  </Suspense>
-                </GridColumn>
-              )}
-              {HistoryList && (
-                <GridColumn verticalAlign="top">
-                  <Suspense fallback={<Loader active inline="centered" />}>
-                    <HistoryList history={history} />
-                  </Suspense>
-                </GridColumn>
-              )}
-            </GridRow>
-          </Grid>
-        </Segment>
-      </main>
+    <main
+      style={{
+        height: "100%",
+
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Segment b color={vendor.color}>
+        <Suspense fallback={<Loader active inline="centered" />}>
+          <SearchBox onSearch={handleSearch} />
+        </Suspense>
+        <Grid
+          doubling
+          style={{ marginTop: "10px" }}
+          columns={history <= 0 ? 1 : 2}
+        >
+          <GridRow verticalAlign="middle">
+            {SearchBox && (
+              <GridColumn>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    flexDirection: "column",
+                  }}
+                >
+                  <WeatherCard weather={weather} vendor={vendor} />
+                </div>
+              </GridColumn>
+            )}
+            {HistoryList && history.length > 0 && (
+              <GridColumn verticalAlign="top">
+                <Suspense fallback={<Loader active inline="centered" />}>
+                  <HistoryList history={history} vendor={vendor} />
+                </Suspense>
+              </GridColumn>
+            )}
+          </GridRow>
+        </Grid>
+      </Segment>
     </main>
   );
 };

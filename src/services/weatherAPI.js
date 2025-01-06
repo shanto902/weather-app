@@ -11,7 +11,7 @@ export const fetchWeatherData = async (location, cached = true) => {
   // Check if cached data exists
   if (cached && cache[location]) {
     console.log("Using cached data for:", location);
-    return cache[location]; // Return cached data if available
+    return cache[location];
   }
 
   const options = {

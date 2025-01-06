@@ -29,7 +29,7 @@ const weatherSlice = createSlice({
       }
     },
     clearHistory: (state) => {
-      state.history = []; // Clear history
+      state.history = [];
     },
   },
   extraReducers: (builder) => {
