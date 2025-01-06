@@ -14,7 +14,12 @@
   padding-bottom: 4px;
 }
 
+.content > .description {
+  padding-bottom: 4px;
+}
+
 .item > img.image {
+  transform: translateY(10px);
   width: 50px !important;
 }
 
