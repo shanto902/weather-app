@@ -125,3 +125,7 @@ Semantic UI is used for consistent design elements such as:
 - Search bar
 - Weather card
 - Responsive grid layout
+
+## ScreenShot
+
+![Screenshot](src/assets/screenshot.png)
