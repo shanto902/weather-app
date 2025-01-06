@@ -11,8 +11,7 @@ import {
   GridColumn,
   GridRow,
 } from "semantic-ui-react";
-
-import WeatherCard from "../components/WeatherCard";
+import WeatherCard from "../components/weatherCard";
 
 const Home = () => {
   const dispatch = useDispatch();
