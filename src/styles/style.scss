@@ -24,6 +24,7 @@
 }
 
 .main-scss {
+  overflow-y: scroll;
   $backgroundColor: var(--background-color);
   height: 100%;
   background-blend-mode: lighten;
