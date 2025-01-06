@@ -4,14 +4,8 @@ import { Header, Image, Menu, MenuItem } from "semantic-ui-react";
 const Dashboard = () => {
   const vendor = useSelector((state) => state.vendor.currentVendor);
   return (
-    <main
-      style={{
-        height: "100vh",
-        display: "flex",
-        flexDirection: "column",
-      }}
-    >
-      <Menu attached borderless color="blue">
+    <main className="dashboard">
+      <Menu borderless color="blue">
         <MenuItem>
           <Image
             style={{

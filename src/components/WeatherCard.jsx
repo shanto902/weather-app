@@ -24,6 +24,7 @@ const WeatherCard = ({ weather, vendor }) => {
   return (
     <Card color={vendor.color}>
       <Image
+        wrapped
         style={{ padding: "20px" }}
         src={isDay ? dayImage : nightImage}
         ui={false}
