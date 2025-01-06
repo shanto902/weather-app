@@ -3,8 +3,8 @@
   --background-color: white;
 }
 
-* {
-  font-family: "Alata", serif;
+*:not(i) {
+  font-family: "Alata", serif !important;
 }
 .content {
   margin: 5px;
@@ -12,9 +12,6 @@
 
 .content > .header {
   padding-bottom: 4px;
-}
-.prompt {
-  font-family: Lato, "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
 .item > img.image {
