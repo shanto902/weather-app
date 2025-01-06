@@ -1,5 +1,24 @@
+@import url("https://fonts.googleapis.com/css?family=Alata");
 :root {
   --background-color: white;
+}
+
+* {
+  font-family: "Alata", serif;
+}
+.content {
+  margin: 5px;
+}
+
+.content > .header {
+  padding-bottom: 4px;
+}
+.prompt {
+  font-family: Lato, "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
+
+.item > img.image {
+  width: 50px !important;
 }
 
 .main-scss {
@@ -7,7 +26,6 @@
   height: 100%;
   background-blend-mode: lighten;
   background-repeat: repeat;
-  background-image: url("/bg.jpg");
   display: flex;
   justify-content: center;
   align-items: center;
