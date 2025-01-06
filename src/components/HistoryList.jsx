@@ -33,13 +33,15 @@ const HistoryList = ({ vendor }) => {
                 style={{ cursor: "pointer" }}
               >
                 <Image
+                  id="history-img"
                   size="mini"
                   src={`https:${location?.current?.condition.icon}`}
                 />
                 <List.Content>
                   <List.Header>{location.location.name}</List.Header>
                   <List.Description>
-                    {location.location.country}
+                    {location.location.region ?? location.location.region + ","}
+                    , {location.location.country}
                   </List.Description>
                   <List.Description>
                     {location.current.temp_c} °C

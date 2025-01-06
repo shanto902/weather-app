@@ -18,7 +18,7 @@
   padding-bottom: 4px;
 }
 
-.item > img.image {
+#history-img {
   transform: translateY(10px);
   width: 50px !important;
 }
@@ -47,8 +47,8 @@
 }
 
 .ui.search .prompt {
-  border-radius: 0px;
-  width: 400px;
+  border-radius: 0.2rem;
+  min-width: 400px;
 }
 @media screen and (max-width: 480px) {
   .ui.search .prompt {
