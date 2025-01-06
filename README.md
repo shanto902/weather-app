@@ -91,6 +91,7 @@ npm run dev
 2. Enter a location in the search bar to view current weather details.
 
 3. The app will display temperature, Day & night and other relevant information.
+4. Toggle features dynamically using the feature flags in `vendors.js`.
 
 ## Code Overview
 
