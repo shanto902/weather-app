@@ -40,9 +40,6 @@ const HistoryList = ({ vendor }) => {
                 <List.Content>
                   <List.Header>{location.location.name}</List.Header>
                   <List.Description>
-                    {location.location.region
-                      ? `${location.location.region}, `
-                      : ""}
                     {location.location.country}
                   </List.Description>
 
