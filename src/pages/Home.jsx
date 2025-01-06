@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToHistory, fetchWeather } from "../store/features/weatherSlice";
 import { Segment, Loader, Grid, GridColumn, GridRow } from "semantic-ui-react";
 import WeatherCard from "../components/WeatherCard";
-
+import SearchBox from "../components/SearchBox";
 const Home = ({ vendor }) => {
   const dispatch = useDispatch();
 
@@ -13,11 +13,6 @@ const Home = ({ vendor }) => {
 
   // Feature Guard
   const hasFeatures = vendor?.features;
-
-  const SearchBox = hasFeatures?.searchEnabled
-    ? React.lazy(() => import("../components/SearchBox"))
-    : null;
-
   const HistoryList = hasFeatures?.historyEnabled
     ? React.lazy(() => import("../components/HistoryList"))
     : null;
@@ -41,28 +36,28 @@ const Home = ({ vendor }) => {
   return (
     <main className="main-scss" style={{ backgroundColor: vendor.color }}>
       <Segment raised color={vendor.color}>
-        <Suspense fallback={<Loader active inline="centered" />}>
-          <SearchBox onSearch={handleSearch} />
-        </Suspense>
+        <SearchBox onSearch={handleSearch} />
+
         <Grid
           doubling
           style={{ marginTop: "10px" }}
-          columns={history <= 0 ? 1 : 2}
+          columns={
+            hasFeatures.historyEnabled === false ? 1 : history <= 0 ? 1 : 2
+          }
         >
           <GridRow verticalAlign="middle">
-            {SearchBox && (
-              <GridColumn>
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    flexDirection: "column",
-                  }}
-                >
-                  <WeatherCard weather={weather} vendor={vendor} />
-                </div>
-              </GridColumn>
-            )}
+            <GridColumn>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  flexDirection: "column",
+                }}
+              >
+                <WeatherCard weather={weather} vendor={vendor} />
+              </div>
+            </GridColumn>
+
             {HistoryList && history.length > 0 && (
               <GridColumn verticalAlign="top">
                 <Suspense fallback={<Loader active inline="centered" />}>
