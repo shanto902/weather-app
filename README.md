@@ -7,7 +7,12 @@ This is a responsive Weather App that fetches real-time weather data using Rapid
 - ### Real-Time Weather Data:
   - Fetches current weather information using RapidAPI.
 - ### Responsive Design:
+
   - Uses Semantic UI for consistent and mobile-friendly UI components.
+
+  - ### Feature Flag System:
+  - Integrated feature flagging through `vendors.js` to enable or disable specific app features dynamically without redeployment.
+
 - ### State Management:
   - Leverages Redux for managing the state efficiently.
 - ### API Integration:
@@ -19,8 +24,35 @@ This is a responsive Weather App that fetches real-time weather data using Rapid
   - React & Semantic UI for responsive and modern styling.
 - ### State Management:
   - Redux for managing app state.
+- ### Feature Flags:
+  - Implemented via `vendors.js` for toggling features dynamically.
 - ### API Integration:
   - Axios for making HTTP requests to RapidAPI's weather endpoint.
+
+## Feature Flag System
+
+The app uses a vendors.js file to handle feature flags. This allows developers to enable or disable features dynamically based on the flags defined. Here's an example structure of the feature flag system:
+
+- Example of vendors.js:
+
+```
+const vendors = {
+  vendor1: {
+    name: "Random company",
+    logo: 'logo.png',
+    theme: "light-theme",
+    color: "blue",
+    features: {
+      searchEnabled: true,
+      historyEnabled: true,
+    },
+  },
+};
+
+export default vendors;
+```
+
+This approach ensures flexibility in rolling out features incrementally or for testing purposes.
 
 ## Installation
 
