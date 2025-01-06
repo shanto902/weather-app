@@ -62,7 +62,6 @@ const SearchBox = () => {
         minCharacters={3}
         fluid
         style={{
-          width: "400px",
           borderRadius: "0px",
         }}
         loading={loading}
