@@ -22,6 +22,9 @@
 }
 @media screen and (max-width: 480px) {
   .ui.search .prompt {
-    width: 400px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
