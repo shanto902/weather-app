@@ -2,13 +2,13 @@
 import { Card, Image } from "semantic-ui-react";
 import dayImage from "../assets/day.png";
 import nightImage from "../assets/night.png";
-import "./WeatherCard.scss";
+
 const WeatherCard = ({ weather, vendor }) => {
   if (!weather) {
     return (
       <p
         style={{
-          margin: "20px 0",
+          margin: "15px 0",
           textAlign: "center",
         }}
       >

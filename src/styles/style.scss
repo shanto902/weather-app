@@ -1,0 +1,40 @@
+:root {
+  --background-color: white;
+}
+
+.main-scss {
+  $backgroundColor: var(--background-color);
+  height: 100%;
+  background-blend-mode: lighten;
+  background-repeat: repeat;
+  background-image: url("/bg.jpg");
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: 200px 200px;
+  background: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.9),
+      rgba(255, 255, 255, 0.9)
+    ),
+    url("/bg.jpg");
+}
+
+.bg_rgba {
+  width: 200px;
+  height: 200px;
+  border: 1px solid black;
+}
+
+.ui.search .prompt {
+  border-radius: 0px;
+  width: 400px;
+}
+@media screen and (max-width: 480px) {
+  .ui.search .prompt {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

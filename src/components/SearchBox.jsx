@@ -61,9 +61,6 @@ const SearchBox = () => {
       <Search
         minCharacters={3}
         fluid
-        style={{
-          borderRadius: "0px",
-        }}
         loading={loading}
         onSearchChange={handleSearchChange}
         onResultSelect={handleResultSelect}

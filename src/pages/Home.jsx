@@ -14,7 +14,6 @@ const Home = ({ vendor }) => {
   // Feature Guard
   const hasFeatures = vendor?.features;
 
-  // Using LazyLoad to make smaller size app
   const SearchBox = hasFeatures?.searchEnabled
     ? React.lazy(() => import("../components/SearchBox"))
     : null;
@@ -40,16 +39,8 @@ const Home = ({ vendor }) => {
   }
 
   return (
-    <main
-      style={{
-        height: "100%",
-
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Segment b color={vendor.color}>
+    <main className="main-scss" style={{ backgroundColor: vendor.color }}>
+      <Segment raised color={vendor.color}>
         <Suspense fallback={<Loader active inline="centered" />}>
           <SearchBox onSearch={handleSearch} />
         </Suspense>
