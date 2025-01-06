@@ -1,0 +1,21 @@
+// Define default theme variables
+$primary-color: #007bff;
+$secondary-color: #6c757d;
+$background-color: #ffffff;
+$text-color: #000000;
+
+// Define a light theme
+.light-theme {
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+  --background-color: #ffffff;
+  --text-color: #000000;
+}
+
+// Define a dark theme
+.dark-theme {
+  --primary-color: #343a40;
+  --secondary-color: #6c757d;
+  --background-color: #212529;
+  --text-color: #f8f9fa;
+}

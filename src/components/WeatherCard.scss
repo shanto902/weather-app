@@ -1,0 +1,22 @@
+.card {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  .card-header {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+  }
+
+  .card-meta {
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+  }
+}
+.ui.search .prompt {
+  border-radius: 0px;
+  width: 400px;
+}
