@@ -3,7 +3,7 @@ import React, { Suspense } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addToHistory, fetchWeather } from "../store/features/weatherSlice";
 import { Segment, Loader, Grid, GridColumn, GridRow } from "semantic-ui-react";
-import WeatherCard from "../components/weatherCard";
+import WeatherCard from "../components/WeatherCard";
 
 const Home = ({ vendor }) => {
   const dispatch = useDispatch();
