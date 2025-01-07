@@ -13,9 +13,10 @@ const Home = ({ vendor }) => {
 
   // Feature Guard
   const hasFeatures = vendor?.features;
-  const HistoryList = hasFeatures?.historyEnabled
-    ? React.lazy(() => import("../components/HistoryList"))
-    : null;
+  const HistoryList =
+    import.meta.env.VITE_FEATURE_FLAG === true
+      ? React.lazy(() => import("../components/HistoryList"))
+      : null;
 
   const handleSearch = (location) => {
     dispatch(fetchWeather(location));
