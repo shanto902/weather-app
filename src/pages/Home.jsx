@@ -5,16 +5,18 @@ import { addToHistory, fetchWeather } from "../store/features/weatherSlice";
 import { Segment, Loader, Grid, GridColumn, GridRow } from "semantic-ui-react";
 import WeatherCard from "../components/WeatherCard";
 import SearchBox from "../components/SearchBox";
+import MapBackground from "../components/MapBackground";
 const Home = ({ vendor }) => {
   const dispatch = useDispatch();
 
   const weather = useSelector((state) => state.weather.current);
   const history = useSelector((state) => state.weather.history);
 
+  console.log(weather);
   // Feature Guard
   const hasFeatures = vendor?.features;
   const HistoryList =
-    import.meta.env.VITE_FEATURE_FLAG === true
+    vendor.features.historyEnabled === true
       ? React.lazy(() => import("../components/HistoryList"))
       : null;
 
@@ -30,13 +32,20 @@ const Home = ({ vendor }) => {
     }
   };
 
+  console.log(weather?.location);
+
   if (!hasFeatures) {
     return <div>Vendor configuration is missing or incorrect.</div>;
   }
 
   return (
-    <main className="main-scss" style={{ backgroundColor: vendor.color }}>
-      <Segment raised color={vendor.color}>
+    <main style={{ position: "relative" }}>
+      <MapBackground vendor={vendor} location={weather?.location} />
+      <Segment
+        style={{ position: "relative", left: 10, zIndex: 1, width: "500px" }}
+        raised
+        color={vendor.color}
+      >
         <SearchBox onSearch={handleSearch} />
 
         <Grid

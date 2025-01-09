@@ -27,6 +27,14 @@
   display: flex;
   flex-direction: column;
 }
+.map {
+  position: "absolute";
+  top: -20;
+  left: 0;
+  height: calc(100vh - 120px);
+  width: "100%";
+  z-index: -1;
+}
 
 .main-scss {
   $backgroundColor: var(--background-color);
