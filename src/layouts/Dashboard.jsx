@@ -5,7 +5,7 @@ const Dashboard = () => {
   const vendor = useSelector((state) => state.vendor.currentVendor);
   return (
     <main className="dashboard">
-      <Menu borderless color="blue">
+      <Menu attached borderless color="blue">
         <MenuItem>
           <Image
             style={{

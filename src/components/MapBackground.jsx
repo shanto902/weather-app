@@ -24,7 +24,7 @@ const MapBackground = ({ vendor, location }) => {
           position: "absolute",
           top: -20,
           left: 0,
-          height: "86vh",
+          height: "100vh",
           width: "100%",
           zIndex: -1,
         }}
