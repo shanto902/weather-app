@@ -8,6 +8,6 @@
   z-index: -2;
 
   @media (max-width: 768px) {
-    height: 60vh; /* Adjust height for mobile screens */
+    height: (calc(100vh - 200px)); /* Adjust height for mobile screens */
   }
 }

@@ -1,5 +1,5 @@
 import Dashboard from "./layouts/Dashboard";
-import "./styles/base/_theme.scss";
+import "./styles/theme.scss";
 function App() {
   return (
     <div>
