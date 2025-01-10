@@ -14,6 +14,8 @@ const Home = ({ vendor }) => {
   const history = useSelector((state) => state.weather.history);
   document.documentElement.style.setProperty("--primary-color", vendor.color);
   console.log(weather);
+
+  const isDay = weather?.current?.is_day;
   // Feature Guard
   const hasFeatures = vendor?.features;
   const HistoryList =
@@ -39,8 +41,15 @@ const Home = ({ vendor }) => {
 
   return (
     <main style={{ position: "relative", height: "100vh" }}>
-      <MapBackground vendor={vendor} location={weather?.location} />
-      <div className={styles.homeContainer} color={vendor.color}>
+      <MapBackground
+        isDay={isDay}
+        vendor={vendor}
+        location={weather?.location}
+      />
+      <div
+        className={`${styles.homeContainer} background`}
+        color={vendor.color}
+      >
         <SearchBox onSearch={handleSearch} />
 
         <Grid style={{ marginTop: "10px" }} columns={1}>

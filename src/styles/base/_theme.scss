@@ -1,0 +1,28 @@
+.day {
+  .text {
+    color: black !important;
+  }
+  .background {
+    background-color: white;
+  }
+  .ui.divided.list > .item {
+    border-top: 1px solid rgba(34, 36, 38, 0.15);
+  }
+  .ui.celled.list > .item:last-child {
+    border-top: 1px solid rgba(34, 36, 38, 0.15);
+  }
+}
+.night {
+  .text {
+    color: white !important;
+  }
+  .background {
+    background-color: #1b1c1d;
+  }
+  .ui.divided.list > .item {
+    border-top: 1px solid rgba(210, 223, 235, 0.236);
+  }
+  .ui.celled.list > .item:last-child {
+    border-top: 1px solid rgba(210, 223, 235, 0.236);
+  }
+}

@@ -22,12 +22,13 @@ const HistoryList = ({ vendor }) => {
       ) : (
         <div className={styles.historyListContainer}>
           <List celled divided relaxed>
-            <Divider as={"h5"} horizontal>
-              Last Viewed Locations
+            <Divider className="text" as={"h5"} horizontal>
+              History
             </Divider>
             {history.slice(-3).map((location, index) => (
               <List.Item
                 key={index}
+                className="text"
                 onClick={() => handleLocationClick(location)}
                 style={{ cursor: "pointer" }}
               >
@@ -35,15 +36,16 @@ const HistoryList = ({ vendor }) => {
                   style={{
                     alignItems: "center",
                     display: "grid",
-                    gridTemplateColumns: "15% 65% 20% ",
+                    gridTemplateColumns: "80% 20% ",
                   }}
                   verticalAlign="middle"
                 >
-                  <p>{index + 1}</p>
                   <div>
-                    <List.Header>{location.location.name}</List.Header>
+                    <List.Header className="text">
+                      {location.location.name}
+                    </List.Header>
 
-                    <List.Description>
+                    <List.Description className="text">
                       {location.current.temp_c} °C
                     </List.Description>
                   </div>

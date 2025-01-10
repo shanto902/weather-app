@@ -1,7 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Alata");
 :root {
   --background-color: white;
-  --primary-color: red;
+  --primary-color: black;
+  --theme-color: #1b1c1d;
+
   ::-webkit-scrollbar {
     width: 5px;
   }
@@ -36,23 +38,6 @@
   max-height: 100vh;
   flex-direction: column;
   overflow: hidden;
-}
-
-.main-scss {
-  $backgroundColor: var(--background-color);
-  min-height: calc(100vh - 120px);
-  background-blend-mode: lighten;
-  background-repeat: repeat;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-size: 200px 200px;
-  background: linear-gradient(
-      0deg,
-      rgba(255, 255, 255, 0.9),
-      rgba(255, 255, 255, 0.9)
-    ),
-    url("/bg.jpg");
 }
 
 .ui.search .prompt {

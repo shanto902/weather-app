@@ -25,7 +25,7 @@ const weatherSlice = createSlice({
     addToHistory: (state, action) => {
       state.history.push(action.payload);
       if (state.history.length > 3) {
-        state.history.shift(); //  last 3 items
+        state.history.shift();
       }
     },
     clearHistory: (state) => {

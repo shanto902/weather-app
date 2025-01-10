@@ -7,7 +7,7 @@ import {
   Pin,
 } from "@vis.gl/react-google-maps";
 import styles from "../styles/mapBackground.module.scss";
-const MapBackground = ({ vendor, location }) => {
+const MapBackground = ({ vendor, location, isDay }) => {
   // Define a default position (e.g., a central location)
   const defaultPosition = { lat: 23.8103, lng: 90.4125 }; // Dhaka, Bangladesh
   const position = location
@@ -19,7 +19,10 @@ const MapBackground = ({ vendor, location }) => {
 
   return (
     <APIProvider apiKey={apiKey}>
-      <div className={styles.mapContainer}>
+      <div
+        className={styles.mapContainer}
+        style={{ filter: !isDay ? "grayscale(100%) invert(100%)" : "" }}
+      >
         <Map
           cameraControl={false}
           disableDefaultUI={true}

@@ -1,10 +1,11 @@
 /* eslint-disable react/prop-types */
 import { Card } from "semantic-ui-react";
-
+import styles from "../styles/home.module.scss";
 const WeatherCard = ({ weather, vendor }) => {
   if (!weather) {
     return (
       <p
+        className="text"
         style={{
           margin: "15px 0",
           textAlign: "center",
@@ -23,18 +24,10 @@ const WeatherCard = ({ weather, vendor }) => {
     <Card centered raised color={vendor.color}>
       <div
         style={{
-          backgroundColor: "red",
           backgroundImage: !isDay ? "url(./night.jpg)" : "url(./day.jpg)",
-          backgroundSize: "cover",
           backgroundPositionY: !isDay ? "-30px" : "-10px",
-          backgroundRepeat: "no-repeat",
-
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "space-around",
-          gap: "20px",
-          padding: "10px",
         }}
+        className={styles.cardBgImg}
       >
         <Card.Content style={{ color: !isDay ? "white" : "" }}>
           <Card.Header textAlign="right" as={"h5"} style={{ margin: 0 }}>
