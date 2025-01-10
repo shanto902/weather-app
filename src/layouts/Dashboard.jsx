@@ -1,14 +1,12 @@
 import Home from "../pages/Home";
 import { Header, Image, Menu, MenuItem } from "semantic-ui-react";
-import vendors from "../config/vendors";
+import { ACTIVE_VENDOR, VENDORS } from "../config/vendors";
 
 import { useSelector } from "react-redux";
 const Dashboard = () => {
-  const vendor = vendors.vendor1;
-  document.documentElement.style.setProperty("--primary-color", vendor.color);
   const weather = useSelector((state) => state?.weather?.current);
   const isDay = weather?.current?.is_day;
-
+  const vendor = VENDORS[ACTIVE_VENDOR];
   return (
     <main className={`dashboard ${!isDay ? `night` : `day`}`}>
       <Menu inverted={!isDay ? true : false} compact attached>
