@@ -47,7 +47,7 @@ const Home = ({ vendor }) => {
           <GridRow verticalAlign="middle">
             <GridColumn
               mobile={
-                history.length && hasFeatures.historyEnabled <= 0 ? 16 : 8
+                hasFeatures.historyEnabled && history.length <= 0 ? 16 : 8
               }
               computer={16}
             >

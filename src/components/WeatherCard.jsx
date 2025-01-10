@@ -1,7 +1,5 @@
 /* eslint-disable react/prop-types */
-import { Card, Image } from "semantic-ui-react";
-import dayImage from "../assets/day.png";
-import nightImage from "../assets/night.png";
+import { Card } from "semantic-ui-react";
 
 const WeatherCard = ({ weather, vendor }) => {
   if (!weather) {
@@ -25,29 +23,42 @@ const WeatherCard = ({ weather, vendor }) => {
     <Card centered raised color={vendor.color}>
       <div
         style={{
-          display: "flex",
+          backgroundColor: "red",
+          backgroundImage: !isDay ? "url(./night.jpg)" : "url(./day.jpg)",
+          backgroundSize: "cover",
+          backgroundPositionY: "-10px",
+          backgroundPositionX: !isDay ? "-55px" : "0px",
+          flexDirection: "column",
           alignItems: "center",
           justifyContent: "space-around",
           gap: "20px",
           padding: "10px",
         }}
       >
-        <Image
-          src={isDay ? dayImage : nightImage}
-          alt={isDay ? "Day" : "Night"}
-          size="tiny"
-        />
-
-        <Card.Content>
+        <Card.Content style={{ color: !isDay ? "white" : "" }}>
           <Card.Header textAlign="right" as={"h5"} style={{ margin: 0 }}>
             {location.name}, {location.country}
           </Card.Header>
-          <Card.Meta textAlign="right" style={{ margin: 0 }} as={"h5"}>
-            {current.temp_c}°C
-          </Card.Meta>
-          <Card.Description textAlign="right">
-            {current?.condition?.text}
-          </Card.Description>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "right",
+              alignItems: "center",
+            }}
+          >
+            <div>
+              <Card.Meta
+                textAlign="right"
+                style={{ margin: 0, color: !isDay ? "white" : "black" }}
+                as={"h5"}
+              >
+                {current.temp_c}°C
+              </Card.Meta>
+              <Card.Description textAlign="right">
+                {current?.condition?.text}
+              </Card.Description>
+            </div>
+          </div>
         </Card.Content>
       </div>
     </Card>
