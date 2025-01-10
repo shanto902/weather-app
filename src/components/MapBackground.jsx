@@ -31,7 +31,7 @@ const MapBackground = ({ vendor, location, isDay }) => {
           zoomControl={false}
           clickableIcons={false}
           scrollwheel={false}
-          zoom={12}
+          defaultZoom={12}
           center={position}
           mapId={mapId}
         >
