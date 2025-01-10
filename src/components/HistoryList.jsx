@@ -22,7 +22,9 @@ const HistoryList = ({ vendor }) => {
       ) : (
         <div className={styles.historyListContainer}>
           <List celled divided relaxed>
-            <Divider horizontal>Last Viewed Locations</Divider>
+            <Divider as={"h5"} horizontal>
+              Last Viewed Locations
+            </Divider>
             {history.slice(-3).map((location, index) => (
               <List.Item
                 key={index}

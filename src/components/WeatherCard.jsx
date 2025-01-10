@@ -26,8 +26,9 @@ const WeatherCard = ({ weather, vendor }) => {
           backgroundColor: "red",
           backgroundImage: !isDay ? "url(./night.jpg)" : "url(./day.jpg)",
           backgroundSize: "cover",
-          backgroundPositionY: "-10px",
-          backgroundPositionX: !isDay ? "-55px" : "0px",
+          backgroundPositionY: !isDay ? "-30px" : "-10px",
+          backgroundRepeat: "no-repeat",
+
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "space-around",
