@@ -40,7 +40,7 @@ const Home = ({ vendor }) => {
   }
 
   return (
-    <main style={{ position: "relative", height: "100vh" }}>
+    <main style={{ position: "relative", height: "100dvh" }}>
       <MapBackground
         isDay={isDay}
         vendor={vendor}

@@ -1,4 +1,7 @@
 .day {
+  body {
+    background-color: white;
+  }
   .text {
     color: black !important;
   }
@@ -13,6 +16,9 @@
   }
 }
 .night {
+  body {
+    background-color: #1b1c1d;
+  }
   .text {
     color: white !important;
   }
