@@ -1,0 +1,19 @@
+/* home.module.scss */
+.homeContainer {
+  position: relative;
+  left: 10px;
+  z-index: 6;
+  margin-top: 10px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px grey;
+  padding: 20px;
+  width: 290px;
+  background-color: white;
+  @media (max-width: 768px) {
+    position: absolute;
+    bottom: 0;
+    width: 100%; /* Adjust height for mobile screens */
+    margin: 0;
+    left: 0;
+  }
+}

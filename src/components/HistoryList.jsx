@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 import { useSelector, useDispatch } from "react-redux";
-import { List, Button, Header, Image } from "semantic-ui-react";
+import { List, Button, Image, Divider } from "semantic-ui-react";
 import { fetchWeather } from "../store/features/weatherSlice";
-
+import styles from "../styles/historyList.module.scss";
 const HistoryList = ({ vendor }) => {
   const dispatch = useDispatch();
   const history = useSelector((state) => state.weather.history);
@@ -16,49 +16,52 @@ const HistoryList = ({ vendor }) => {
   };
 
   return (
-    <div style={{ marginTop: "20px" }}>
-      <Header textAlign="center" color={vendor.color} as="h3">
-        Last Viewed Locations
-      </Header>
-
+    <div>
       {history.length === 0 ? (
         <p>No recently viewed locations.</p>
       ) : (
-        <>
+        <div className={styles.historyListContainer}>
           <List celled divided relaxed>
+            <Divider horizontal>Last Viewed Locations</Divider>
             {history.slice(-3).map((location, index) => (
               <List.Item
                 key={index}
                 onClick={() => handleLocationClick(location)}
                 style={{ cursor: "pointer" }}
               >
-                <Image
-                  id="history-img"
-                  size="mini"
-                  src={`https:${location?.current?.condition.icon}`}
-                />
-                <List.Content>
-                  <List.Header>{location.location.name}</List.Header>
-                  <List.Description>
-                    {location.location.country}
-                  </List.Description>
+                <List.Content
+                  style={{
+                    alignItems: "center",
+                    display: "grid",
+                    gridTemplateColumns: "15% 65% 20% ",
+                  }}
+                  verticalAlign="middle"
+                >
+                  <p>{index + 1}</p>
+                  <div>
+                    <List.Header>{location.location.name}</List.Header>
 
-                  <List.Description>
-                    {location.current.temp_c} °C
-                  </List.Description>
+                    <List.Description>
+                      {location.current.temp_c} °C
+                    </List.Description>
+                  </div>
+                  <Image src={`https:${location?.current?.condition.icon}`} />
                 </List.Content>
               </List.Item>
             ))}
           </List>
-          <Button
-            onClick={handleClearHistory}
-            color={vendor.color}
-            style={{ marginBottom: "10px" }}
-            fluid
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
           >
-            Clear History
-          </Button>
-        </>
+            <Button compact onClick={handleClearHistory} color={vendor.color}>
+              Clear History
+            </Button>
+          </div>
+        </div>
       )}
     </div>
   );

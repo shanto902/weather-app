@@ -24,8 +24,7 @@ const SearchBox = () => {
           description: `${
             response.location.region && `${response.location.region},`
           } ${response.location.country}`,
-          image: `https:${response.current?.condition.icon}`,
-          price: `${response.current?.temp_c} °C`,
+
           value: response.location.name,
         },
       ];

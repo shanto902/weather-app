@@ -1,6 +1,14 @@
 @import url("https://fonts.googleapis.com/css?family=Alata");
 :root {
   --background-color: white;
+  --primary-color: red;
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: (var(--primary-color));
+    border-radius: 5px;
+  }
 }
 
 *:not(i) {
@@ -25,15 +33,9 @@
 
 .dashboard {
   display: flex;
+  max-height: 100vh;
   flex-direction: column;
-}
-.map {
-  position: "absolute";
-  top: -20;
-  left: 0;
-  height: calc(100vh - 120px);
-  width: "100%";
-  z-index: -1;
+  overflow: hidden;
 }
 
 .main-scss {
@@ -53,19 +55,12 @@
     url("/bg.jpg");
 }
 
-.bg_rgba {
-  width: 200px;
-  height: 200px;
-  border: 1px solid black;
-}
-
 .ui.search .prompt {
   border-radius: 0.2rem;
-  width: 400px;
 }
-@media screen and (max-width: 980px) {
+@media screen and (max-width: 768px) {
   .ui.search .prompt {
-    width: 100%;
+    width: 90vw;
     display: flex;
     justify-content: center;
     align-items: center;

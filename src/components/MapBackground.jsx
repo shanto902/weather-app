@@ -6,7 +6,7 @@ import {
   Map,
   Pin,
 } from "@vis.gl/react-google-maps";
-
+import styles from "../styles/mapBackground.module.scss";
 const MapBackground = ({ vendor, location }) => {
   // Define a default position (e.g., a central location)
   const defaultPosition = { lat: 23.8103, lng: 90.4125 }; // Dhaka, Bangladesh
@@ -19,16 +19,7 @@ const MapBackground = ({ vendor, location }) => {
 
   return (
     <APIProvider apiKey={apiKey}>
-      <div
-        style={{
-          position: "absolute",
-          top: -20,
-          left: 0,
-          height: "100vh",
-          width: "100%",
-          zIndex: -1,
-        }}
-      >
+      <div className={styles.mapContainer}>
         <Map
           cameraControl={false}
           disableDefaultUI={true}

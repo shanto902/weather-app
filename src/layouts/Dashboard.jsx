@@ -1,11 +1,11 @@
-import { useSelector } from "react-redux";
 import Home from "../pages/Home";
 import { Header, Image, Menu, MenuItem } from "semantic-ui-react";
+import vendors from "../config/vendors";
 const Dashboard = () => {
-  const vendor = useSelector((state) => state.vendor.currentVendor);
+  const vendor = vendors.vendor1;
   return (
     <main className="dashboard">
-      <Menu attached borderless color="blue">
+      <Menu tabular attached borderless>
         <MenuItem>
           <Image
             style={{

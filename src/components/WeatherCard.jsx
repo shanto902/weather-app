@@ -22,21 +22,34 @@ const WeatherCard = ({ weather, vendor }) => {
   const isDay = current.is_day;
 
   return (
-    <Card color={vendor.color}>
-      <Image
-        wrapped
-        style={{ padding: "20px" }}
-        src={isDay ? dayImage : nightImage}
-        ui={false}
-        alt={isDay ? "Day" : "Night"}
-      />
-      <Card.Content>
-        <Card.Header>
-          {location.name}, {location.country}
-        </Card.Header>
-        <Card.Meta>{current.temp_c}°C</Card.Meta>
-        <Card.Description>{current?.condition?.text}</Card.Description>
-      </Card.Content>
+    <Card centered raised color={vendor.color}>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-around",
+          gap: "20px",
+          padding: "10px",
+        }}
+      >
+        <Image
+          src={isDay ? dayImage : nightImage}
+          alt={isDay ? "Day" : "Night"}
+          size="tiny"
+        />
+
+        <Card.Content>
+          <Card.Header textAlign="right" as={"h5"} style={{ margin: 0 }}>
+            {location.name}, {location.country}
+          </Card.Header>
+          <Card.Meta textAlign="right" style={{ margin: 0 }} as={"h5"}>
+            {current.temp_c}°C
+          </Card.Meta>
+          <Card.Description textAlign="right">
+            {current?.condition?.text}
+          </Card.Description>
+        </Card.Content>
+      </div>
     </Card>
   );
 };

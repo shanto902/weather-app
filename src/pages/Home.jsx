@@ -2,21 +2,22 @@
 import React, { Suspense } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addToHistory, fetchWeather } from "../store/features/weatherSlice";
-import { Segment, Loader, Grid, GridColumn, GridRow } from "semantic-ui-react";
+import { Loader, Grid, GridColumn, GridRow } from "semantic-ui-react";
 import WeatherCard from "../components/WeatherCard";
 import SearchBox from "../components/SearchBox";
 import MapBackground from "../components/MapBackground";
+import styles from "../styles/home.module.scss";
 const Home = ({ vendor }) => {
   const dispatch = useDispatch();
 
   const weather = useSelector((state) => state.weather.current);
   const history = useSelector((state) => state.weather.history);
-
+  document.documentElement.style.setProperty("--primary-color", vendor.color);
   console.log(weather);
   // Feature Guard
   const hasFeatures = vendor?.features;
   const HistoryList =
-    vendor.features.historyEnabled === true
+    hasFeatures.historyEnabled === true
       ? React.lazy(() => import("../components/HistoryList"))
       : null;
 
@@ -32,31 +33,24 @@ const Home = ({ vendor }) => {
     }
   };
 
-  console.log(weather?.location);
-
   if (!hasFeatures) {
     return <div>Vendor configuration is missing or incorrect.</div>;
   }
 
   return (
-    <main style={{ position: "relative" }}>
+    <main style={{ position: "relative", height: "100vh" }}>
       <MapBackground vendor={vendor} location={weather?.location} />
-      <Segment
-        style={{ position: "relative", left: 10, zIndex: 1, width: "500px" }}
-        raised
-        color={vendor.color}
-      >
+      <div className={styles.homeContainer} color={vendor.color}>
         <SearchBox onSearch={handleSearch} />
 
-        <Grid
-          doubling
-          style={{ marginTop: "10px" }}
-          columns={
-            hasFeatures.historyEnabled === false ? 1 : history <= 0 ? 1 : 2
-          }
-        >
+        <Grid style={{ marginTop: "10px" }} columns={1}>
           <GridRow verticalAlign="middle">
-            <GridColumn>
+            <GridColumn
+              mobile={
+                history.length && hasFeatures.historyEnabled <= 0 ? 16 : 8
+              }
+              computer={16}
+            >
               <div
                 style={{
                   display: "flex",
@@ -69,7 +63,7 @@ const Home = ({ vendor }) => {
             </GridColumn>
 
             {HistoryList && history.length > 0 && (
-              <GridColumn verticalAlign="top">
+              <GridColumn mobile={8} computer={16} verticalAlign="top">
                 <Suspense fallback={<Loader active inline="centered" />}>
                   <HistoryList history={history} vendor={vendor} />
                 </Suspense>
@@ -77,7 +71,7 @@ const Home = ({ vendor }) => {
             )}
           </GridRow>
         </Grid>
-      </Segment>
+      </div>
     </main>
   );
 };
