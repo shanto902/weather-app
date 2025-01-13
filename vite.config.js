@@ -9,25 +9,34 @@ export default defineConfig({
   },
   build: {
     rollupOptions: {
+      external: (id) => {
+        if (
+          id.includes("HistoryList") &&
+          VENDORS[ACTIVE_VENDOR].features.historyEnabled === false
+        ) {
+          return true;
+        }
+        return false;
+      },
       output: {
         manualChunks: (id) => {
           if (
             id.includes("HistoryList") &&
             VENDORS[ACTIVE_VENDOR].features.historyEnabled === false
           ) {
-            return "exclude-history-list";
+            return null;
           }
         },
       },
       plugins: [
         {
-          name: "exclude-feature-specific",
+          name: "exclude-history-list",
           resolveId(source) {
             if (
               source.includes("HistoryList") &&
               VENDORS[ACTIVE_VENDOR].features.historyEnabled === false
             ) {
-              return null;
+              return { id: source, external: true };
             }
           },
         },
