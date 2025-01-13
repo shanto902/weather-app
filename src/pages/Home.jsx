@@ -1,19 +1,19 @@
 /* eslint-disable react/prop-types */
 import React, { Suspense } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addToHistory, fetchWeather } from "../store/features/weatherSlice";
+import { addToHistory, fetchWeather } from "../redux/features/weatherSlice";
 import { Loader, Grid, GridColumn, GridRow } from "semantic-ui-react";
 import WeatherCard from "../components/WeatherCard";
 import SearchBox from "../components/SearchBox";
 import MapBackground from "../components/MapBackground";
 import styles from "../styles/home.module.scss";
+import { toast } from "sonner";
 const Home = ({ vendor }) => {
   const dispatch = useDispatch();
 
   const weather = useSelector((state) => state.weather.current);
   const history = useSelector((state) => state.weather.history);
   document.documentElement.style.setProperty("--primary-color", vendor.color);
-  console.log(weather);
 
   const isDay = weather?.current?.is_day;
   // Feature Guard
@@ -32,6 +32,8 @@ const Home = ({ vendor }) => {
           temperature: weather.temperature,
         })
       );
+    } else {
+      toast.error("Something went wrong");
     }
   };
 

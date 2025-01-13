@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { fetchWeatherData } from "../../services/weatherAPI";
+import { toast } from "sonner";
 
 export const fetchWeather = createAsyncThunk(
   "weather/fetchWeather",
@@ -8,9 +9,7 @@ export const fetchWeather = createAsyncThunk(
       const weatherData = await fetchWeatherData(location);
       return weatherData;
     } catch (error) {
-      return rejectWithValue(
-        error.response?.data || "Failed to fetch weather data"
-      );
+      return rejectWithValue(toast.error(error.message || "API Error"));
     }
   }
 );

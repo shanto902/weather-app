@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Search } from "semantic-ui-react";
-import { fetchWeather, addToHistory } from "../store/features/weatherSlice";
+import { fetchWeather, addToHistory } from "../redux/features/weatherSlice";
 import { fetchWeatherData } from "../services/weatherAPI";
 
 const SearchBox = () => {

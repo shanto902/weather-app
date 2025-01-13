@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useSelector, useDispatch } from "react-redux";
 import { List, Button, Image, Divider } from "semantic-ui-react";
-import { fetchWeather } from "../store/features/weatherSlice";
+import { fetchWeather } from "../redux/features/weatherSlice";
 import styles from "../styles/historyList.module.scss";
 const HistoryList = ({ vendor }) => {
   const dispatch = useDispatch();
