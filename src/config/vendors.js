@@ -17,4 +17,4 @@ export const VENDORS = {
   },
 };
 
-export const ACTIVE_VENDOR = "vendor2";
+export const ACTIVE_VENDOR = "vendor1";
